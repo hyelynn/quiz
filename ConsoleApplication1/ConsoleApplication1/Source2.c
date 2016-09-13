@@ -13,7 +13,7 @@ bool isArcircle1(const double x, const double y) {
 	const double x_c = 0.5;
 	const double y_c = 0.5;
 	const double r = 0.5;
-	const double f = pow(x - x_c, 2) + pow(y - y_c, 2);
+	const double f = pow(x - x_c, 2) + pow(y - y_c, 2) - pow(r, 2);
 	if (f > 0.0)
 
 		return false;
@@ -24,7 +24,7 @@ bool isArcircle2(const double x, const double y) {
 	const double x_c = 2.5;
 	const double y_c = 0.5;
 	const double r = 0.5;
-	const double f = pow(x - x_c, 2) + pow(y - y_c, 2);
+	const double f = pow(x - x_c, 2) + pow(y - y_c, 2)-pow(r,2);
 	if (f > 0.0)
 
 		return false;
@@ -51,7 +51,7 @@ void main() {
 
 	for (int i = 0; i < 10000; i++) {
 		double x = getNum(1.0, 2.0);
-		double y = getNum(0.0, 1.0);
+		double y = getNum(0.3, 0.7);
 		fprintf(of, "%f, %f\n", x, y);
 	}
 	fclose(of);
