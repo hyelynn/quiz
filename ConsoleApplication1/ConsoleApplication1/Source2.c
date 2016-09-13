@@ -9,12 +9,24 @@ double getNum(const double min, const double max) {
 	return temp;
 }
 
-bool isArcircle(const double x, const double y) {
-	const double x_c = 1.0;
+bool isArcircle1(const double x, const double y) {
+	const double x_c = 0.5;
 	const double y_c = 0.5;
 	const double r = 0.5;
-	const double f = pow(x - x_c, 2) / 4 + pow(y - y_c, 2);
+	const double f = pow(x - x_c, 2) + pow(y - y_c, 2);
 	if (f > 0.0)
+
+		return false;
+	else
+		return true;
+}
+bool isArcircle2(const double x, const double y) {
+	const double x_c = 2.5;
+	const double y_c = 0.5;
+	const double r = 0.5;
+	const double f = pow(x - x_c, 2) + pow(y - y_c, 2);
+	if (f > 0.0)
+
 		return false;
 	else
 		return true;
@@ -24,10 +36,23 @@ void main() {
 	FILE *of = fopen("arCircle.txt", "w");
 	srand((unsigned int)time(NULL));
 	for (int i = 0; i < 10000; i++) {
-		double x = getNum(0.0, 4.0);
+		double x = getNum(0.0, 1.0);
 		double y = getNum(0.0, 1.0);
-		if (isArcircle(x, y) == true)
+		if (isArcircle1(x, y) == true)
 			fprintf(of, "%f, %f\n", x, y);
+	}
+
+	for (int i = 0; i < 10000; i++) {
+		double x = getNum(2.0, 3.0);
+		double y = getNum(0.0, 1.0);
+		if (isArcircle2(x, y) == true)
+			fprintf(of, "%f, %f\n", x, y);
+	}
+
+	for (int i = 0; i < 10000; i++) {
+		double x = getNum(1.0, 2.0);
+		double y = getNum(0.0, 1.0);
+		fprintf(of, "%f, %f\n", x, y);
 	}
 	fclose(of);
 }
